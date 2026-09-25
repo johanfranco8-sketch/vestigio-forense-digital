@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VESTIGIO | Informática Forense y Ciberseguridad Ética</title>
+  <meta name="description" content="Laboratorio de informática forense: peritaje digital, recuperación de evidencia, respuesta a incidentes, análisis de malware y hacking ético con cadena de custodia certificada." />
+  <meta name="theme-color" content="#07090d" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Medidas de seguridad a nivel de documento -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com https://api.fontshare.com; font-src 'self' https://fonts.gstatic.com https://cdn.fontshare.com data:; img-src 'self' data:; connect-src 'self'; form-action 'self' mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <meta property="og:title" content="VESTIGIO | Informática Forense" />
+  <meta property="og:description" content="Evidencia digital que resiste en un tribunal. Peritaje, respuesta a incidentes y hacking ético." />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- Aplica el tema antes de pintar para evitar parpadeo -->
+  <script src="js/theme-init.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <div class="bg-grid" aria-hidden="true"></div>
+  <canvas id="matrix" class="bg-matrix" aria-hidden="true"></canvas>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="VESTIGIO, inicio">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <path d="M20 3 L35 11 V29 L20 37 L5 29 V11 Z" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 14 L20 28 L28 14" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="square"/>
+          <circle cx="20" cy="28" r="2.2" fill="var(--accent)"/>
+        </svg>
+        <span class="brand-text">VESTIGIO<span class="brand-sub">forense digital</span></span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Principal">
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#metodo">Metodología</a></li>
+          <li><a href="#hash">Verificador</a></li>
+          <li><a href="#casos">Casos</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="#contacto" class="btn btn-primary btn-sm nav-cta">Solicitar peritaje</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar a tema claro" title="Cambiar tema">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot"></span> Laboratorio activo 24/7 · Respuesta en menos de 2 h</p>
+          <h1>La evidencia digital <span class="glitch" data-text="no miente.">no miente.</span><br/>Nosotros la hacemos hablar.</h1>
+          <p class="lead">Peritaje informático, respuesta a incidentes y hacking ético con cadena de custodia verificable. Informes técnicos con validez probatoria bajo ISO/IEC 27037 y NIST SP 800-86.</p>
+          <div class="hero-ctas">
+            <a href="#contacto" class="btn btn-primary">Solicitar peritaje <span aria-hidden="true">→</span></a>
+            <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+          </div>
+          <ul class="hero-badges" aria-label="Normas aplicadas">
+            <li>ISO/IEC 27037</li><li>NIST 800-86</li><li>RFC 3227</li><li>OWASP</li>
+          </ul>
+        </div>
+
+        <div class="terminal" role="img" aria-label="Terminal mostrando una adquisición forense con verificación de hash">
+          <div class="terminal-bar">
+            <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
+            <span class="terminal-title">vestigio@lab:~/caso-2026-0417</span>
+          </div>
+          <pre class="terminal-body" id="terminal-body" aria-hidden="true"></pre>
+        </div>
+      </div>
+
+      <div class="container">
+        <dl class="stats">
+          <div class="stat"><dt>Casos resueltos</dt><dd><span class="counter" data-target="1240">0</span>+</dd></div>
+          <div class="stat"><dt>Dispositivos analizados</dt><dd><span class="counter" data-target="8600">0</span>+</dd></div>
+          <div class="stat"><dt>Informes admitidos en juicio</dt><dd><span class="counter" data-target="98">0</span>%</dd></div>
+          <div class="stat"><dt>Tiempo medio de respuesta</dt><dd>&lt;<span class="counter" data-target="2">0</span> h</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ SERVICIOS ============ -->
+    <section class="section" id="servicios">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker">// 01 · servicios</p>
+          <h2>Capacidades forenses de extremo a extremo</h2>
+          <p>Desde la adquisición del primer bit hasta la declaración pericial. Cada servicio se documenta con hash, sello de tiempo y trazabilidad completa.</p>
+        </header>
+
+        <div class="services-grid">
+          <article class="card service reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg></div>
+            <h3>Forense de computadores</h3>
+            <p>Imagen bit a bit de discos HDD/SSD/NVMe, análisis de artefactos de Windows, macOS y Linux, líneas de tiempo y recuperación de archivos borrados.</p>
+            <ul class="tags"><li>E01 / RAW</li><li>Timeline</li><li>Registro</li></ul>
+          </article>
+
+          <article class="card service reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+            <h3>Forense de móviles</h3>
+            <p>Extracción lógica, de sistema de archivos y física en Android e iOS. Mensajería, geolocalización, multimedia y aplicaciones eliminadas.</p>
+            <ul class="tags"><li>WhatsApp</li><li>iOS</li><li>Android</li></ul>
+          </article>
+
+          <article class="card service reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2 3 6v6c0 5 4 9 9 10 5-1 9-5 9-10V6z"/><path d="M12 8v5M12 16h.01"/></svg></div>
+            <h3>Respuesta a incidentes</h3>
+            <p>Contención de ransomware, intrusiones y fugas de información. Análisis de memoria RAM volátil, logs y tráfico de red para identificar el vector de ataque.</p>
+            <ul class="tags"><li>DFIR</li><li>RAM</li><li>IOC</li></ul>
+          </article>
+
+          <article class="card service reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></div>
+            <h3>Peritaje judicial</h3>
+            <p>Dictámenes periciales con lenguaje claro para jueces y abogados. Ratificación y defensa del informe en audiencia, contraperitaje y revisión de pruebas.</p>
+            <ul class="tags"><li>Dictamen</li><li>Audiencia</li><li>Contraperitaje</li></ul>
+          </article>
+
+          <article class="card service reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></div>
+            <h3>Análisis de malware</h3>
+            <p>Ingeniería inversa estática y dinámica en entornos aislados. Extracción de indicadores de compromiso, reglas YARA y reporte de capacidades.</p>
+            <ul class="tags"><li>Sandbox</li><li>YARA</li><li>Reversing</li></ul>
+          </article>
+
+          <article class="card service reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="1"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+            <h3>Hacking ético y pentesting</h3>
+            <p>Pruebas de intrusión autorizadas sobre aplicaciones web, redes e infraestructura cloud, con alcance firmado y plan de remediación priorizado.</p>
+            <ul class="tags"><li>OWASP Top 10</li><li>Red</li><li>Cloud</li></ul>
+          </article>
+
+          <article class="card service reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-5-5"/></svg></div>
+            <h3>OSINT e investigación</h3>
+            <p>Investigación de fuentes abiertas para fraude, suplantación de identidad, acoso digital y due diligence, con capturas certificadas.</p>
+            <ul class="tags"><li>Fraude</li><li>Suplantación</li><li>Certificación web</li></ul>
+          </article>
+
+          <article class="card service reveal">
+            <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+            <h3>Recuperación de datos</h3>
+            <p>Recuperación en discos dañados, RAID, memorias USB y tarjetas SD, con informe de integridad de cada archivo recuperado.</p>
+            <ul class="tags"><li>RAID</li><li>SSD</li><li>Carving</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ METODOLOGÍA ============ -->
+    <section class="section section-alt" id="metodo">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker">// 02 · metodología</p>
+          <h2>Un proceso que resiste el escrutinio</h2>
+          <p>Cinco fases alineadas con ISO/IEC 27037. Cada paso queda registrado en la cadena de custodia.</p>
+        </header>
+
+        <ol class="timeline">
+          <li class="step reveal">
+            <span class="step-num">01</span>
+            <div><h3>Identificación</h3><p>Delimitamos el alcance, los dispositivos y las fuentes de evidencia relevantes junto con el cliente o el despacho jurídico.</p></div>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">02</span>
+            <div><h3>Adquisición</h3><p>Clonado forense con bloqueadores de escritura. Se calculan hashes SHA-256 del original y de la copia en el momento.</p></div>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">03</span>
+            <div><h3>Preservación</h3><p>Almacenamiento cifrado, embalaje sellado y registro de cada acceso. La evidencia original nunca se manipula.</p></div>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">04</span>
+            <div><h3>Análisis</h3><p>Examen sobre copias de trabajo con herramientas validadas. Los hallazgos son reproducibles por un tercero.</p></div>
+          </li>
+          <li class="step reveal">
+            <span class="step-num">05</span>
+            <div><h3>Informe y defensa</h3><p>Dictamen técnico comprensible, anexos con hashes y soporte en audiencia para ratificar las conclusiones.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ VERIFICADOR HASH ============ -->
+    <section class="section" id="hash">
+      <div class="container hash-wrap">
+        <div class="hash-copy reveal">
+          <p class="kicker">// 03 · herramienta</p>
+          <h2>Verifique la integridad de un archivo</h2>
+          <p>Calcule la huella SHA-256 de cualquier archivo directamente en su navegador. <strong>El archivo nunca sale de su equipo</strong>: el cálculo se hace localmente con Web Crypto API.</p>
+          <p class="muted">Útil para comprobar que una evidencia entregada coincide con el hash del informe pericial.</p>
+        </div>
+
+        <div class="hash-tool card reveal">
+          <label class="dropzone" id="dropzone" for="hash-file">
+            <input type="file" id="hash-file" class="sr-only" />
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v4h16v-4"/></svg>
+            <span class="dz-title">Arrastre un archivo o haga clic</span>
+            <span class="dz-sub">Máx. 200 MB · procesado local</span>
+          </label>
+
+          <div class="hash-result" id="hash-result" aria-live="polite">
+            <div class="hash-row"><span class="hash-label">Archivo</span><span class="hash-value" id="hash-name">—</span></div>
+            <div class="hash-row"><span class="hash-label">Tamaño</span><span class="hash-value" id="hash-size">—</span></div>
+            <div class="hash-row"><span class="hash-label">SHA-256</span><code class="hash-value hash-code" id="hash-out">—</code></div>
+          </div>
+
+          <div class="hash-compare">
+            <label for="hash-expected" class="field-label">Comparar con hash esperado (opcional)</label>
+            <div class="compare-row">
+              <input type="text" id="hash-expected" class="input mono" placeholder="Pegue aquí el SHA-256 del informe" maxlength="64" autocomplete="off" spellcheck="false" />
+              <button type="button" class="btn btn-ghost btn-sm" id="hash-copy" disabled>Copiar</button>
+            </div>
+            <p class="compare-status" id="compare-status" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CASOS ============ -->
+    <section class="section section-alt" id="casos">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker">// 04 · casos</p>
+          <h2>Casos reales, identidades protegidas</h2>
+          <p>Ejemplos anonimizados. Nunca revelamos datos de clientes sin autorización expresa.</p>
+        </header>
+
+        <div class="cases-grid">
+          <article class="case card reveal">
+            <p class="case-meta"><span class="pill">Corporativo</span> Fuga de información</p>
+            <h3>Exfiltración de planos por un exempleado</h3>
+            <p>El análisis de artefactos USB y sincronización en la nube demostró la copia de 3.200 archivos confidenciales 48 horas antes de la renuncia.</p>
+            <p class="case-result"><span>Resultado</span> Acuerdo extrajudicial favorable</p>
+          </article>
+          <article class="case card reveal">
+            <p class="case-meta"><span class="pill">Penal</span> Suplantación</p>
+            <h3>Perfil falso en redes sociales</h3>
+            <p>Correlación OSINT, metadatos EXIF y registros de acceso permitieron atribuir la autoría del perfil con un nivel de certeza aceptado por el juez.</p>
+            <p class="case-result"><span>Resultado</span> Prueba admitida en juicio</p>
+          </article>
+          <article class="case card reveal">
+            <p class="case-meta"><span class="pill">Pyme</span> Ransomware</p>
+            <h3>Cifrado total de servidores de facturación</h3>
+            <p>Contención en 90 minutos, identificación del acceso RDP expuesto y recuperación del 94 % de los datos desde instantáneas no cifradas.</p>
+            <p class="case-result"><span>Resultado</span> Operación restablecida en 36 h</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq">
+      <div class="container faq-wrap">
+        <header class="section-head reveal">
+          <p class="kicker">// 05 · preguntas</p>
+          <h2>Preguntas frecuentes</h2>
+        </header>
+        <div class="faq-list">
+          <details class="faq reveal">
+            <summary>¿Un informe pericial informático tiene validez legal?</summary>
+            <p>Sí, siempre que se respete la cadena de custodia y se utilicen métodos reproducibles. Nuestros dictámenes siguen ISO/IEC 27037 y se acompañan de hashes verificables por cualquier contraparte.</p>
+          </details>
+          <details class="faq reveal">
+            <summary>¿Pueden recuperar conversaciones de WhatsApp borradas?</summary>
+            <p>En muchos casos sí, dependiendo del modelo, el sistema operativo, el cifrado y el tiempo transcurrido. Tras una evaluación inicial gratuita le indicamos la viabilidad real.</p>
+          </details>
+          <details class="faq reveal">
+            <summary>¿Qué hago si sufro un ataque de ransomware?</summary>
+            <p>No apague los equipos ni pague el rescate. Desconéctelos de la red, no borre nada y contáctenos de inmediato: la memoria RAM puede contener claves y evidencia valiosa.</p>
+          </details>
+          <details class="faq reveal">
+            <summary>¿El hacking ético es legal?</summary>
+            <p>Sí. Solo trabajamos con autorización escrita del propietario de los sistemas, un alcance firmado y acuerdos de confidencialidad. Nunca realizamos accesos no autorizados a terceros.</p>
+          </details>
+          <details class="faq reveal">
+            <summary>¿Cómo protegen la confidencialidad de mis datos?</summary>
+            <p>Firmamos NDA, almacenamos la evidencia cifrada con AES-256 en un laboratorio con control de acceso y destruimos las copias de trabajo de forma certificada al cerrar el caso.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section class="section section-alt" id="contacto">
+      <div class="container contact-wrap">
+        <div class="contact-copy reveal">
+          <p class="kicker">// 06 · contacto</p>
+          <h2>Cuéntenos su caso. Confidencialidad total.</h2>
+          <p>Evaluación inicial sin costo en menos de 24 horas. Para emergencias activas (ransomware, intrusión en curso) use la línea directa.</p>
+          <ul class="contact-list">
+            <li><span class="cl-label">Emergencias 24/7</span><a href="tel:+570000000000">+57 000 000 0000</a></li>
+            <li><span class="cl-label">Correo cifrado</span><a href="mailto:contacto@vestigio.example">contacto@vestigio.example</a></li>
+            <li><span class="cl-label">Laboratorio</span><span>Bogotá, Colombia · Atención nacional</span></li>
+          </ul>
+          <p class="pgp mono">PGP · 7A3F 91C2 0B4E 5D18 A6F0 · 2C9E 44B1 E803 7F5A D210</p>
+        </div>
+
+        <form class="contact-form card reveal" id="contact-form" novalidate autocomplete="on">
+          <div class="field">
+            <label for="f-name" class="field-label">Nombre completo</label>
+            <input class="input" id="f-name" name="nombre" type="text" required minlength="3" maxlength="80" autocomplete="name" />
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-email" class="field-label">Correo electrónico</label>
+              <input class="input" id="f-email" name="email" type="email" required maxlength="120" autocomplete="email" />
+              <span class="field-error" aria-live="polite"></span>
+            </div>
+            <div class="field">
+              <label for="f-phone" class="field-label">Teléfono (opcional)</label>
+              <input class="input" id="f-phone" name="telefono" type="tel" maxlength="20" autocomplete="tel" inputmode="tel" />
+              <span class="field-error" aria-live="polite"></span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-service" class="field-label">Servicio requerido</label>
+            <select class="input" id="f-service" name="servicio" required>
+              <option value="">Seleccione una opción</option>
+              <option>Forense de computadores</option>
+              <option>Forense de móviles</option>
+              <option>Respuesta a incidentes</option>
+              <option>Peritaje judicial</option>
+              <option>Análisis de malware</option>
+              <option>Hacking ético / Pentesting</option>
+              <option>OSINT e investigación</option>
+              <option>Recuperación de datos</option>
+            </select>
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="f-msg" class="field-label">Describa brevemente el caso</label>
+            <textarea class="input" id="f-msg" name="mensaje" rows="4" required minlength="20" maxlength="1500"></textarea>
+            <span class="field-hint"><span id="msg-count">0</span>/1500 · No incluya contraseñas ni datos sensibles</span>
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+
+          <!-- Honeypot antispam: invisible para personas -->
+          <div class="hp" aria-hidden="true">
+            <label for="f-web">No completar</label>
+            <input id="f-web" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <label class="check">
+            <input type="checkbox" id="f-consent" name="consentimiento" required />
+            <span>Acepto el tratamiento de mis datos conforme a la política de privacidad (Ley 1581 de 2012).</span>
+          </label>
+          <span class="field-error" id="consent-error" aria-live="polite"></span>
+
+          <button type="submit" class="btn btn-primary btn-block" id="f-submit">Enviar solicitud cifrada</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-text">VESTIGIO<span class="brand-sub">forense digital</span></span>
+        <p class="muted">Laboratorio independiente de informática forense y ciberseguridad ética.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Pie de página">
+        <a href="#servicios">Servicios</a>
+        <a href="#metodo">Metodología</a>
+        <a href="#hash">Verificador</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <p class="footer-legal mono">© <span id="year">2026</span> VESTIGIO · Todos los hallazgos, con hash.</p>
+    </div>
+  </footer>
+
+  <button class="to-top" id="to-top" type="button" aria-label="Volver arriba">↑</button>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
